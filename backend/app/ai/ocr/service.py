@@ -1,0 +1,2 @@
+class OCRService:
+    pass
