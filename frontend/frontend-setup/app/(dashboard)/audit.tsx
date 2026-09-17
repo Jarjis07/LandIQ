@@ -14,7 +14,7 @@ import {
   getAuditEvents,
 } from "../../services/auditService";
 
-import type { AuditEvent } from "../../types/audit";
+import type { AuditEvent } from "../../../types/audit";
 
 export default function AuditScreen() {
   const [events, setEvents] = useState<AuditEvent[]>([]);

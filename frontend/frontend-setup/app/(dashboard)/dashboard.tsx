@@ -20,10 +20,10 @@ import {
 import type {
   AuditEvent,
   DashboardMetrics,
-} from "../../types/audit";
+} from "../../../types/audit";
 
-export default function DashboardScreen() {
-  const router = useRouter();
+export default function DashboardScreen() { 
+    const router = useRouter();
   const [metrics, setMetrics] =
     useState<DashboardMetrics | null>(null);
 
@@ -99,35 +99,30 @@ export default function DashboardScreen() {
           </View>
         )}
 
-        
-<View style={styles.grid}>
-  {cards.map(([label, value]) => (
-    <View key={String(label)} style={styles.metricCard}>
-      <Text style={styles.metricValue}>
-        {String(value)}
-      </Text>
+        <View style={styles.grid}>
+          {cards.map(([label, value]) => (
+            <View key={String(label)} style={styles.metricCard}>
+              <Text style={styles.metricValue}>
+                {String(value)}
+              </Text>
 
-      <Text style={styles.metricLabel}>
-        {String(label)}
-      </Text>
-    </View>
-  ))}
-</View>
+              <Text style={styles.metricLabel}>
+                {String(label)}
+              </Text>
+            </View>
+          ))}
+        </View>
 
-<Pressable
-  style={styles.navButton}
-  onPress={() => router.push("/(dashboard)/audit")}
->
-  <Text style={styles.navButtonText}>
-    Open Audit Trail →
-  </Text>
-</Pressable>
-  
+               <Pressable
+          style={styles.auditButton}
+          onPress={() => router.push("/(dashboard)/audit")}
+        >
+          <Text style={styles.auditButtonText}>Open Audit Trail</Text>
+        </Pressable>
 
         <Text style={styles.sectionTitle}>
           Recent Activity
         </Text>
-
         {events.length === 0 ? (
           <View style={styles.activityCard}>
             <Text style={styles.subtitle}>
@@ -248,16 +243,15 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: "#334155",
   },
-navButton: {
-  alignSelf: "flex-start",
-  backgroundColor: "#176B56",
-  paddingVertical: 12,
-  paddingHorizontal: 16,
-  borderRadius: 8,
-},
-navButtonText: {
-  color: "#FFFFFF",
-  fontSize: 14,
-  fontWeight: "700",
-},
+    auditButton: {
+    backgroundColor: "#176B56",
+    padding: 12,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  auditButtonText: {
+    color: "#FFFFFF",
+    fontSize: 14,
+    fontWeight: "600",
+  },
 });
